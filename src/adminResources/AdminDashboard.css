@@ -264,3 +264,22 @@ li {
     width: 90%;
   }
 }
+.adminDashboardNav{
+  display: flex;
+  flex-direction: row;
+  border: #333 solid 1px;
+  width: 100%;
+  background-color: black;
+  border-radius: 10%;
+
+}
+.propsNav{
+  width: 100%;
+  background-color: blue;
+  border-radius: 0%;
+  border: whitesmoke solid 1px;
+  
+}
+.functionalElements{
+  width: 100%;
+}
