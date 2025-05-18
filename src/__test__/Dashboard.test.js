@@ -1,8 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import DashboardSwitcher from '../adminResources/DashboardSwitcher';
 import '@testing-library/jest-dom';
+import DashboardSwitcher from '../adminResources/adminProps/DashboardSwitcher';
 
-// Mock fetch globally for download tests
 global.fetch = jest.fn();
 
 const defaultDashboards = {
