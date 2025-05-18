@@ -234,6 +234,7 @@ app.delete('/reports/:id', async (req, res) => {
     }
 });
 
+
 {/* Implementing the events functionality
   URL for  http:localhost:3000/emails */}
 app.post('/events',async (req,res)=>{
@@ -315,8 +316,20 @@ app.post('/emails', async (req, res) => {
       });
     }
   });
-  
 
+//deletes an event
+app.delete('/events/:id', async (req, res) =>{
+    try{
+      const deletedEvent = await TempEventModel.findByIdAndDelete(req.params.id);
+      if (!deletedEvent) {
+      return res.status(404).json({ error: 'Event not found' });
+    }
+        res.json({message: 'Event Deleted'});
+    }catch (error){
+        console.error('Error deleting event', error);
+        res.status(500).json({ error: 'Failed to delete event'})
+    }
+  });
 
   app.get('/useremails', async (req, res) => {
     try {
