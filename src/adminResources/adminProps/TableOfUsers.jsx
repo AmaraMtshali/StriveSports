@@ -44,35 +44,62 @@ export default function TableOfUsers(){
         </section>
         
         <section className='usersTable'>
-        <Box sx={{ width: "100%" }}>
-            <DataGrid
-                rows={rows}
-                columns={[
-                    { field: 'name', headerName: 'Name', flex: 1 },
-                    { field: 'lastName', headerName: 'Last Name', flex: 1 },
-                    { field: 'email', headerName: 'Email', flex: 2 },
-                    { field: 'role', headerName: 'Role', flex: 1,
+  <Box sx={{ width: "100%" }}>
+    <DataGrid
+      rows={rows}
+      columns={[
+        { field: 'name', headerName: 'Name', flex: 1 },
+        { field: 'lastName', headerName: 'Last Name', flex: 1 },
+        { field: 'email', headerName: 'Email', flex: 2 },
+        {
+          field: 'role',
+          headerName: 'Role',
+          flex: 1,
+          renderCell: (params) => (
+            <button
+              onClick={() => roleChange(params.row)}
+              style={{
+                fontSize: "clamp(0.65rem, 1vw, 0.85rem)", // Responsive font size
+                padding: "4px 8px",
+                lineHeight: 1.2,
+              }}
+            >
+              {params.value}
+            </button>
+          ),
+        },
+      ]}
+      pageSize={5}
+      rowsPerPageOptions={[5]}
+      sx={{
+        fontFamily: "Arial, sans-serif",
+        "& .MuiDataGrid-cell": {
+          fontSize: {
+            xs: "0.65rem",
+            sm: "0.75rem",
+            md: "0.85rem",
+            lg: "1rem",
+          },
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        },
+        "& .MuiDataGrid-columnHeaders": {
+          fontSize: {
+            xs: "0.7rem",
+            sm: "0.8rem",
+            md: "0.9rem",
+            lg: "1rem",
+          },
+        },
+        "& .MuiDataGrid-root": {
+          width: "100%",
+        },
+      }}
+    />
+  </Box>
+</section>
 
-                        renderCell: (params) => (
-                            <button onClick={() => roleChange(params.row)}>
-                                {params.value}
-                            </button>
-                        ),
-            
-                     },
-                ]}
-                pageSize={5}
-                rowsPerPageOptions={[5]}
-                sx={{
-                    "& .MuiDataGrid-root": { fontFamily: "Arial, sans-serif" },
-                    "& .MuiDataGrid-cell": { fontSize:"large" },
-                    "& .MuiDataGrid-width": { width: "100%" },
-                }}
-            
-                
-            />
-        </Box>
-        </section>
         </>
     )
 

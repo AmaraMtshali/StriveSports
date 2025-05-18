@@ -13,7 +13,7 @@ function SignUp(){
         <section className="text">
             <h1>Sign in</h1>
         </section>
-        {/* <figure className="card" id="card-1"> */} */
+        {/* <figure className="card" id="card-1"> */} 
           {/* <img src={volly}/> */}
         {/* </figure> */}
           {/* // <figure className="card" id="card-2"> */}

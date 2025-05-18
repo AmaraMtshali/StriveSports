@@ -1,0 +1,77 @@
+.contact-section {
+    align-items: center;
+    display: flex;
+    padding: 2rem;
+    background-color: #000; 
+    color: #fff;
+    gap: 3rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    transform: translateY(0) scale(1);
+    transition: transform 0.96s ease-out;
+    height:75vh;
+    box-sizing: border-box;
+    scroll-margin-top: 80px;
+    margin-top:1vh;
+    position:relative;
+    overflow: hidden;
+    width:100%;
+    text-align: center;
+    margin-top: 15vh;
+  }
+
+.contact-text{
+    flex: 1;
+    max-width: 600px;
+    justify-content: center;
+    margin-top: 3vh;
+    padding-left:2%;
+  }
+  
+  .contact-text h1 {
+    font-size: 8rem;
+    margin-bottom: 2rem;
+    font-family: "Roslindale";
+    font-weight: 600;
+  }
+  
+  .contact-text p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    margin-bottom: 1vh;
+  }
+  @font-face {
+    font-family: "Roslindale";
+    src: url('./assets/fonts/Roslindale-DisplayCondensed.ttf') format('truetype');
+    font-weight: 250;
+    font-style: normal;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 20vh;
+      height: 40vh;
+      margin-bottom: 2vh;
+
+    }
+    .contact-text {
+        margin-top: 0;
+        padding-left: 0;
+        max-width: 100%;
+      }
+    
+      .contact-text h1 {
+        font-size: 2rem;
+      }
+    
+      .contact-text p {
+        font-size: 1rem;
+        margin-bottom: 0vh;
+      }
+    }
