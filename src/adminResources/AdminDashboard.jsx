@@ -13,7 +13,7 @@ import { useState } from 'react';
 let globalVar;
 export default function AdminDashboard() {
 
-    const [showArr, setShowArr] = useState(['none', 'none', 'none', 'none', 'none', 'none']);
+    const [showArr, setShowArr] = useState(['block', 'none', 'none', 'none', 'none', 'none']);
 
     useEffect(() => {
         const ids = ["all", "stats", "TableOfUsers", "calender&Events", "issues", "emails"];
@@ -33,18 +33,20 @@ export default function AdminDashboard() {
 
     return(
         <main className='adminDashBoardBody' >
-        <h1 className='adminDashboard'>Admin Dashboard</h1>
+        <nav className='intro'>
+            <h1 className='adminDashboard'>Admin Dashboard</h1>
 
-        <ul className='adminDashboardNav'>
-            <li><button id='allProps' className='propsNav' onClick={()=>navigateTo(0)}>All</button></li>
-            <li><button id='statistics' className='propsNav' onClick={()=>navigateTo(1)}>Statistics</button></li>
-            <li><button id='users' className='propsNav' onClick={()=>navigateTo(2)}>Users</button></li>
-            <li><button id='calenderAndEvents' className='propsNav' onClick={()=>navigateTo(3)}>Events&Calender</button></li>
-            <li><button id='reports' className='propsNav' onClick={()=>navigateTo(4)}>Reports</button></li>
-            <li><button id='email' className='propsNav' onClick={()=>navigateTo(5)}>Email</button></li>
-        </ul>
+            <ul className='adminDashboardNav'>
+                <li><button id='allProps' className='propsNav' onClick={()=>navigateTo(0)}>All</button></li>
+                <li><button id='statistics' className='propsNav' onClick={()=>navigateTo(1)}>Statistics</button></li>
+                <li><button id='users' className='propsNav' onClick={()=>navigateTo(2)}>Users</button></li>
+                <li><button id='calenderAndEvents' className='propsNav' onClick={()=>navigateTo(3)}>Events&Calender</button></li>
+                <li><button id='reports' className='propsNav' onClick={()=>navigateTo(4)}>Reports</button></li>
+                <li><button id='email' className='propsNav' onClick={()=>navigateTo(5)}>Email</button></li>
+            </ul>
 
-        <section className='userButton'><UserButton/></section>
+            <section className='userButton'><UserButton/></section>
+        </nav>
 
         <section>
                 <BookingImplementation/>
@@ -53,19 +55,23 @@ export default function AdminDashboard() {
         
 
         <section className='all' id='all' >
+            <h2 className='title'>Statistics</h2>
             <DashboardSwitcher />
+            <h2 className='title'>List of users</h2>
             <TableOfUsers/>
+            <h2 className='title'>Calender and Events</h2>
             <CalenderAndEvents/>
+            <h2 className='title'>Facility Issues and Email management</h2>
             <section className='issuesAndEmails'>
                 <FacilityReports/>
                 <EmailFunctionality/>
             </section>
         </section>
-        <section id='stats' className='functionalElements' ><DashboardSwitcher/></section>
-        <section id='TableOfUsers' className='functionalElements'><TableOfUsers/></section>
-        <section id='calender&Events' className='functionalElements'><CalenderAndEvents/></section>
-        <section id='issues' className='functionalElements'><FacilityReports/></section>
-        <section id='emails' className='functionalElements'><EmailFunctionality/></section>
+        <section id='stats' className='functionalElements' ><h2 className='title2'>Statistics</h2><DashboardSwitcher/></section>
+        <section id='TableOfUsers' className='functionalElements'><h2 className='title2'>List of users</h2><TableOfUsers/></section>
+        <section id='calender&Events' className='functionalElements'><h2 className='title2'>Calender and Events</h2><CalenderAndEvents/></section>
+        <section id='issues' className='functionalElements'><h2 className='title2'>Facility Issues</h2><FacilityReports/></section>
+        <section id='emails' className='functionalElements'><h2 className='title2'>Email management</h2><EmailFunctionality/></section>
         
         </main>
     )
