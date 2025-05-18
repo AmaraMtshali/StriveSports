@@ -14,6 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-items: center;
   gap: 4vh;
   background-color: #f8f9fa;
   overflow-x: hidden;
@@ -24,7 +25,7 @@ body {
   font-size: 4rem;
   color: #2b18bd;
   font-family: Helvetica, Arial, sans-serif;
-  margin-top: 2vh;
+  margin-top: 5vh;
 }
 
 /* === Layout Sections === */
@@ -262,6 +263,7 @@ li {
   .usersTable,
   .emailFormBox {
     width: 90%;
+    margin-top: 5vh;
   }
 }
 .adminDashboardNav{

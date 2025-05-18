@@ -38,47 +38,92 @@ export default function CalenderAndEvents() {
 
     //handle event add and cancel
 
-    const handleEventAdd = () => {
+    const handleEventAdd = async () => {
         const eventDetails = document.getElementById('eventDetails');
         const eventName = document.getElementById('eventName').value;
         const timePick = document.getElementById('timePick').value;
-        const eventText = document.getElementById('eventText').value;
         const timeEnd = document.getElementById('timeEnd').value;
+        const eventText = document.getElementById('eventText').value;
         const date = globalVar;
-
+    
         const calendarApi = date.view.calendar;
         calendarApi.unselect(); // clear date selection
-
-        if (eventName && timePick && timeEnd){
+    
+        if (eventName && timePick && timeEnd) {
             eventDetails.style.zIndex = -1;
+    
+            // 1. Add event to calendar
             calendarApi.addEvent({
                 title: eventName,
-                start: `${date.startStr}T${timePick}`, 
-                end: `${date.startStr}T${timeEnd}`, 
+                start: `${date.startStr}T${timePick}`,
+                end: `${date.startStr}T${timeEnd}`,
                 eventDetails: eventText || 'No details'
             });
+    
             handleEventCancel();
-            //send the event to the server
-            fetch(`${import.meta.env.VITE_API_URL}/events`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    "event": eventName,
-                    "date": date.startStr,
-                    "time_from": timePick,
-                    "time_to": timeEnd,
-                    "event_description": eventText || 'No details'
-                }),
-            });
+    
+            
+            try {
+                await fetch(`${import.meta.env.VITE_API_URL}/events`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        "event": eventName,
+                        "date": date.startStr,
+                        "time_from": timePick,
+                        "time_to": timeEnd,
+                        "event_description": eventText || 'No details'
+                    }),
+                });
+            } catch (err) {
+                console.error('Failed to save event to server:', err);
+            }
+    
+            
+            const subject = `Upcoming Event: ${eventName}`;
+            const message = `Dear StriveSports Community member,<br/><br/>
+            You’re invited to our upcoming event:<br/><br/>
+            <strong>Event:</strong> ${eventName}<br/>
+            <strong>Date:</strong> ${date.startStr}<br/>
+            <strong>Time:</strong> ${timePick} – ${timeEnd}<br/><br/>
+            ${eventText || 'No additional details provided.'}<br/><br/>
+            Can’t wait to see you there!`;
+    
+            
+            try {
+                const data = await getemails();
+                console.log('Fetched emails:', data.emails);
+    
+                if (!data.emails || data.emails.length === 0) {
+                    toast.error('No emails found.');
+                    return;
+                }
+    
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/emails`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        subject,
+                        message,
+                        emails: data.emails
+                    }),
+                });
+    
+                const result = await response.json();
+    
+                if (response.ok) {
+                    toast.success('Event created and emails sent!');
+                } else {
+                    toast.error(`Email failed: ${result.error}`);
+                }
+            } catch (error) {
+                console.error('Error sending emails:', error);
+                toast.error('Email sending failed due to server error.');
+            }
+        } else {
+            alert('At least the event name and times must be provided.');
         }
-        else {
-            alert('Atleast the event name and time should be provided');
-        }
-
-    }
-
+    };
     //event cancelation
     const handleEventCancel = () => {
         const eventDetails = document.getElementById('eventDetails');

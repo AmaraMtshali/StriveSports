@@ -39,8 +39,29 @@ export default function FacilityReports() {
                         pageSize={5}
                         rowsPerPageOptions={[5]}
                         sx={{
-                            "& .MuiDataGrid-root": { fontFamily: "Arial, sans-serif" },
-                            "& .MuiDataGrid-cell": { fontSize:"large" },
+                                fontFamily: "Arial, sans-serif",
+                                "& .MuiDataGrid-cell": {
+                                  fontSize: {
+                                    xs: "0.65rem",
+                                    sm: "0.75rem",
+                                    md: "0.85rem",
+                                    lg: "1rem",
+                                  },
+                                  whiteSpace: "nowrap",
+                                  overflow: "hidden",
+                                  textOverflow: "ellipsis",
+                                },
+                                "& .MuiDataGrid-columnHeaders": {
+                                  fontSize: {
+                                    xs: "0.7rem",
+                                    sm: "0.8rem",
+                                    md: "0.9rem",
+                                    lg: "1rem",
+                                  },
+                                },
+                                "& .MuiDataGrid-root": {
+                                  width: "100%",
+                                },
                         }}
                     
                         

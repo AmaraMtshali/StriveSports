@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Home from "./Components/Home/Home.jsx";
 import About from "./Components/About/About.jsx";
 import Signup from "./Components/Signup/signup.jsx";
+import Contact from './Components/Contacts/Contacts.jsx';
 import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -52,13 +53,16 @@ function Landing() {
           e.preventDefault();
           document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
     }}>About</a></li>
-          <li><a href="#">Contacts</a></li>
+          <li><a href="#contact">Contacts</a></li>
           <li><a href="#signup">Sign in</a></li>
         </ul>
       </nav>
       <Home />
       <section id="about" style={{ scrollMarginTop: '120px' }}>
       <About />
+      </section>
+      <section id="contact" style={{scrollMarginTop: '120px',minHeight: '100vh'}}>
+        <Contact/>
       </section>
       <section id="signup" style={{scrollMarginTop: '120px',minHeight: '100vh'}}> 
         <Signup />
