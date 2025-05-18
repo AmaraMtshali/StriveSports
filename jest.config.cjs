@@ -8,9 +8,11 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+       "^.+\\.mjs$": "babel-jest"
   },
   transformIgnorePatterns: [
     '/node_modules/(?!(\\@fullcalendar)/)',
     '/node_modules/(?!preact).+\\.js$',
+    "/node_modules/(?!@clerk/)"
   ],
 };

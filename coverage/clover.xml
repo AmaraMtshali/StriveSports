@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747506728290" clover="3.2.0">
-  <project timestamp="1747506728290" name="All files">
-    <metrics statements="91" coveredstatements="71" conditionals="24" coveredconditionals="16" methods="26" coveredmethods="22" elements="141" coveredelements="109" complexity="0" loc="91" ncloc="91" packages="5" files="12" classes="12"/>
+<coverage generated="1747596448091" clover="3.2.0">
+  <project timestamp="1747596448091" name="All files">
+    <metrics statements="110" coveredstatements="90" conditionals="30" coveredconditionals="21" methods="29" coveredmethods="25" elements="169" coveredelements="136" complexity="0" loc="110" ncloc="110" packages="6" files="16" classes="16"/>
+    <package name="server.models">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="reports.js" path="C:\Users\Lemogang Matlou\Desktop\COMS\SD\StriveSports\server\models\reports.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="sportsbooking.js" path="C:\Users\Lemogang Matlou\Desktop\COMS\SD\StriveSports\server\models\sportsbooking.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="src">
-      <metrics statements="23" coveredstatements="20" conditionals="18" coveredconditionals="11" methods="4" coveredmethods="4"/>
+      <metrics statements="24" coveredstatements="21" conditionals="18" coveredconditionals="11" methods="5" coveredmethods="5"/>
+      <file name="App.jsx" path="C:\Users\Lemogang Matlou\Desktop\COMS\SD\StriveSports\src\App.jsx">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="16" count="5" type="stmt"/>
+      </file>
       <file name="afterSignInRedirect.jsx" path="C:\Users\Lemogang Matlou\Desktop\COMS\SD\StriveSports\src\afterSignInRedirect.jsx">
         <metrics statements="22" coveredstatements="19" conditionals="18" coveredconditionals="11" methods="3" coveredmethods="3"/>
         <line num="7" count="5" type="stmt"/>
@@ -42,7 +63,7 @@
       </file>
     </package>
     <package name="src.adminResources">
-      <metrics statements="50" coveredstatements="35" conditionals="2" coveredconditionals="2" methods="12" coveredmethods="10"/>
+      <metrics statements="60" coveredstatements="45" conditionals="8" coveredconditionals="7" methods="14" coveredmethods="12"/>
       <file name="BlockedUser.jsx" path="C:\Users\Lemogang Matlou\Desktop\COMS\SD\StriveSports\src\adminResources\BlockedUser.jsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
@@ -78,6 +99,19 @@
         <line num="66" count="7" type="stmt"/>
         <line num="69" count="1" type="stmt"/>
         <line num="70" count="1" type="stmt"/>
+      </file>
+      <file name="SignRedirect.jsx" path="C:\Users\Lemogang Matlou\Desktop\COMS\SD\StriveSports\src\adminResources\SignRedirect.jsx">
+        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="9" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
       </file>
       <file name="getUserById.jsx" path="C:\Users\Lemogang Matlou\Desktop\COMS\SD\StriveSports\src\adminResources\getUserById.jsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
