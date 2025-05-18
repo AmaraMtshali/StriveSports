@@ -13,7 +13,7 @@ import { useState } from 'react';
 let globalVar;
 export default function AdminDashboard() {
 
-    const [showArr, setShowArr] = useState(['none', 'none', 'none', 'none', 'none', 'none']);
+    const [showArr, setShowArr] = useState(['block', 'none', 'none', 'none', 'none', 'none']);
 
     useEffect(() => {
         const ids = ["all", "stats", "TableOfUsers", "calender&Events", "issues", "emails"];
