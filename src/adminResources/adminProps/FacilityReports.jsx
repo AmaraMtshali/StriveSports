@@ -30,8 +30,10 @@ export default function FacilityReports() {
 
     return (
         <section className='usersTable'>
-                <Box>
+                <Box sx={{ width: '100%' }}>
                     <DataGrid
+                    autoHeight
+                    
                         rows={rows2}
                         columns={[
                             { field: 'facility', headerName: 'facility', flex: 1 },
