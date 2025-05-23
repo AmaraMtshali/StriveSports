@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.28% </span>
+                <span class="strong">60.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/28</span>
+                <span class='fraction'>17/28</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.28% </span>
+                <span class="strong">60.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/28</span>
+                <span class='fraction'>17/28</span>
             </div>
         
             
@@ -132,11 +132,9 @@
 <a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,7 +143,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -160,7 +160,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -175,10 +175,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,11 +203,11 @@ const DashboardSwitcher = () =&gt; {
   const dashboards = {
     maintenance: {
       title: 'Maintenance Dashboard',
-      url: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=680810f8-19dd-4115-84d0-1a597dcd4c43&amp;theme=light&amp;autoRefresh=true&amp;maxDataAge=3600&amp;showTitleAndDesc=false&amp;scalingWidth=scale&amp;scalingHeight=scale'
+      url: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=680810f8-19dd-4115-84d0-1a597dcd4c43&amp;theme=light&amp;autoRefresh=true&amp;maxDataAge=60&amp;showTitleAndDesc=false&amp;scalingWidth=fixed&amp;scalingHeight=fixed'
     },
     booking: {
       title: 'Booking Dashboard',
-      url: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=d7683d19-69a9-415c-bb7b-3b7f97a53ac1&amp;theme=light&amp;autoRefresh=true&amp;maxDataAge=3600&amp;showTitleAndDesc=false&amp;scalingWidth=scale&amp;scalingHeight=scale'
+      url: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=d7683d19-69a9-415c-bb7b-3b7f97a53ac1&amp;theme=light&amp;autoRefresh=true&amp;maxDataAge=60&amp;showTitleAndDesc=false&amp;scalingWidth=fixed&amp;scalingHeight=fixed'
     }
   };
 &nbsp;
@@ -244,7 +244,7 @@ const DashboardSwitcher = () =&gt; {
   return (
     &lt;section&gt;
       &lt;section style={{ marginBottom: '20px', marginLeft: '10px' }} className="dashboard-buttons"&gt;
-        &lt;button onClick={() =&gt; setActiveDashboard('maintenance')}&gt;Maintenance Dashboard&lt;/button&gt;
+        &lt;button onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setActiveDashboard('maintenance')}</span>&gt;Maintenance Dashboard&lt;/button&gt;
         &lt;button onClick={() =&gt; setActiveDashboard('booking')}&gt;Booking Dashboard&lt;/button&gt;
         &lt;button onClick={handleDownloadPDF}&gt;Download as PDF&lt;/button&gt;
         &lt;button onClick={handleDownloadCSV}&gt;Download CSV&lt;/button&gt;
@@ -268,7 +268,7 @@ export default DashboardSwitcher;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-19T11:51:08.768Z
+                at 2025-05-19T13:16:40.496Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

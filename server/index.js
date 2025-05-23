@@ -27,10 +27,9 @@ const clerk = createClerkClient({
     secretKey: process.env.CLERK_SECRET_KEY,
 });
 
-//const {clerk } = clerk({apikey:process.env.CLERK_SECRET_KEY}); // use this to get emails
 
 const app = express()
-//app.use(cors())
+
 app.use(express.json())
 app.use(cors());
 

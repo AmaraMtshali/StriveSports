@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1747655468941" clover="3.2.0">
-  <project timestamp="1747655468941" name="All files">
-    <metrics statements="109" coveredstatements="89" conditionals="30" coveredconditionals="21" methods="29" coveredmethods="25" elements="168" coveredelements="135" complexity="0" loc="109" ncloc="109" packages="7" files="16" classes="16"/>
+<coverage generated="1747660600630" clover="3.2.0">
+  <project timestamp="1747660600630" name="All files">
+    <metrics statements="109" coveredstatements="88" conditionals="30" coveredconditionals="21" methods="29" coveredmethods="24" elements="168" coveredelements="133" complexity="0" loc="109" ncloc="109" packages="7" files="16" classes="16"/>
     <package name="server.models">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="reports.js" path="C:\Users\favour\react-app\server\models\reports.js">
@@ -108,13 +108,13 @@
       </file>
     </package>
     <package name="src.adminResources.adminProps">
-      <metrics statements="28" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+      <metrics statements="28" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
       <file name="DashboardSwitcher.jsx" path="C:\Users\favour\react-app\src\adminResources\adminProps\DashboardSwitcher.jsx">
-        <metrics statements="28" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <metrics statements="28" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="7" type="stmt"/>
-        <line num="6" count="7" type="stmt"/>
-        <line num="17" count="7" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
@@ -125,7 +125,7 @@
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
-        <line num="32" count="7" type="stmt"/>
+        <line num="32" count="6" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
@@ -136,8 +136,8 @@
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
-        <line num="47" count="7" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
+        <line num="47" count="6" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
         <line num="51" count="1" type="stmt"/>
       </file>
     </package>
