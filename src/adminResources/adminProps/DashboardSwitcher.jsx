@@ -1,8 +1,13 @@
+{/*This file is concerned with handling the dashboard switching logic and displaying the charts that are supposed to be there. */}
+
 import React, { useState } from 'react';
 import "./DashboardSwitcher.css";
 const DashboardSwitcher = () => {
   const [activeDashboard, setActiveDashboard] = useState('maintenance');
 
+
+  //these are connected to the mongodb dashboards ,
+  //As there are two dashboard implementations.
   const dashboards = {
     maintenance: {
       title: 'Maintenance Dashboard',
@@ -10,25 +15,12 @@ const DashboardSwitcher = () => {
     },
     booking: {
       title: 'Booking Dashboard',
-      url: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=d7683d19-69a9-415c-bb7b-3b7f97a53ac1&theme=light&autoRefresh=true&maxDataAge=60&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed'
+      url: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=d7683d19-69a9-415c-bb7b-3b7f97a53ac1&theme=light&autoRefresh=true&maxDataAge=60&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixedc'
     }
   };
 
-  const handleDownloadPDF = async () => {
-    try {
-      const response = await fetch(`http://localhost:8080/download-dashboard/${activeDashboard}`);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${activeDashboard}_dashboard.pdf`;
-      a.click();
-      window.URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error('Download failed:', err);
-    }
-  };
 
+//logic to download csv files based on the current dashboard you are currently seeing
   const handleDownloadCSV = async () => {
     try {
       const response = await fetch(`http://localhost:8080/api/download-csv/${activeDashboard}`);
@@ -49,7 +41,6 @@ const DashboardSwitcher = () => {
       <section style={{ marginBottom: '20px', marginLeft: '10px' }} className="dashboard-buttons">
         <button onClick={() => setActiveDashboard('maintenance')}>Maintenance Dashboard</button>
         <button onClick={() => setActiveDashboard('booking')}>Booking Dashboard</button>
-        <button onClick={handleDownloadPDF}>Download as PDF</button>
         <button onClick={handleDownloadCSV}>Download CSV</button>
       </section>
 
