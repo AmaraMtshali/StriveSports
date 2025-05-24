@@ -1,5 +1,5 @@
 const getUsers= async()=>{
-    const response = await fetch('https://back-end-strive-sports.vercel.app/users',{
+    const response = await fetch(`${import.meta.env.VITE_VERCEL_URL}/users`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

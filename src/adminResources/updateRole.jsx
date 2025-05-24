@@ -4,7 +4,7 @@ export default async function updateRole(newRole) {
     const userId = localStorage.getItem('userId');
 
     try{
-        const response = await fetch('https://back-end-strive-sports.vercel.app/users/roleUpdate',{
+        const response = await fetch(`${import.meta.env.VITE_VERCEL_URL}/users/roleUpdate`,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

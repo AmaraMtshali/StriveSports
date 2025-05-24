@@ -11,11 +11,11 @@ const DashboardSwitcher = () => {
   const dashboards = {
     maintenance: {
       title: 'Maintenance Dashboard',
-      url: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=680810f8-19dd-4115-84d0-1a597dcd4c43&theme=light&autoRefresh=true&maxDataAge=60&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed'
+      url: `${import.meta.env.VITE_MAIN_DASH_URL}`
     },
     booking: {
       title: 'Booking Dashboard',
-      url: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=d7683d19-69a9-415c-bb7b-3b7f97a53ac1&theme=light&autoRefresh=true&maxDataAge=60&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixedc'
+      url: `${import.meta.env.VITE_BOOK_DASH_URL}`
     }
   };
 
@@ -23,7 +23,7 @@ const DashboardSwitcher = () => {
 //logic to download csv files based on the current dashboard you are currently seeing
   const handleDownloadCSV = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/download-csv/${activeDashboard}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/download-csv/${activeDashboard}`);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');

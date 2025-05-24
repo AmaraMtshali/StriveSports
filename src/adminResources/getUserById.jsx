@@ -1,5 +1,5 @@
 export default async function getUserById(userId) {//returns 0 when user not found
-    const user = await fetch('https://back-end-strive-sports.vercel.app/user/byId',{
+    const user = await fetch(`${import.meta.env.VITE_VERCEL_URL}/user/byId`,{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
