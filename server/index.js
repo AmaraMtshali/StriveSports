@@ -382,7 +382,6 @@ app.delete('/events/:id', async (req, res) =>{
 //csv file downloading and formating api
 app.get('/api/download-csv/:type', async (req, res) => {
   const { type } = req.params;
-
   let data;
   let fields;
 
@@ -404,9 +403,9 @@ app.get('/api/download-csv/:type', async (req, res) => {
     const json2csvParser = new Parser({ fields });
     const csv = json2csvParser.parse(data);
 
-    res.header('Content-Type', 'text/csv');
-    res.attachment(`${type}_dashboard_data.csv`);
-    return res.send(csv);
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', `attachment; filename=${type}_dashboard_data.csv`);
+    return res.status(200).send(csv);
   } catch (error) {
     console.error('CSV generation error:', error);
     res.status(500).send('Failed to generate CSV');
