@@ -186,6 +186,32 @@ export default function Res() {
 
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isEventModalOpen, setIsEventModalOpen] = useState(false);
+  //get weather from weatherapi
+  const [weather, setWeather] = useState(null);
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+        const city = "Johannesburg";
+        const response = await fetch(
+          `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`
+        );
+        const data = await response.json();
+
+        setWeather({
+          temp: data.current.temp_c,
+          icon: data.current.condition.icon,
+          text: data.current.condition.text,
+        });
+      } catch (error) {
+        console.error("Weather fetch failed:", error);
+      }
+    };
+
+    fetchWeather();
+  }, []);
+
   return (
     <>
       <SignedIn>
@@ -193,7 +219,35 @@ export default function Res() {
           <section className='userButton'>
             <UserButton />
           </section>
-
+          <section className="weather">
+          {weather && (
+            <Box
+              sx={{
+                position: 'absolute',
+                top: 20,
+                right: 20,
+                backgroundColor: '#fff',
+                padding: '10px 15px',
+                borderRadius: '10px',
+                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                zIndex: 1000,
+              }}
+            >
+              <img src={weather.icon} alt={weather.text} style={{ width: 40, height: 40 }} />
+              <Box ml={1}>
+                <Typography variant="body1" sx={{ fontWeight: 600, color: '#000' }}>
+                  {weather.temp}°C
+                </Typography>
+                <Typography variant="body2" sx={{ textTransform: 'capitalize', color: '#444' }}>
+                  {weather.text}
+                </Typography>
+              </Box>
+            </Box>
+          )}
+          </section>
+        
           <Box className='cont'>
             <Box className="designer-container">
             <Typography 

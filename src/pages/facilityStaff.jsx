@@ -77,6 +77,7 @@ export default function FacilityStaff() {
     }, [calendarRef]); // Add `calendarRef` as a dependency
 
     let statusN
+    //Change status and auto send email to all users
     const ReportStatus = async (status) => {
         const messageBox = document.querySelector('.messageDetails');
         messageBox.style.display = 'block';
