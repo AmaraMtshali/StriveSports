@@ -14,6 +14,9 @@ import getEvents from '../adminResources/getEvents';
 import getReports from '../adminResources/getReports';
 import updateStatus from '../adminResources/updateStatus';
 import updateReportStatus from '../adminResources/updateReportStatus';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import getemails from '../adminResources/getemails';
 
 let globalVar;
 export default function FacilityStaff() {
@@ -73,12 +76,78 @@ export default function FacilityStaff() {
     }, [calendarRef]); // Add `calendarRef` as a dependency
 
     let statusN
-    const ReportStatus = (status) => {//text menu
-        
-        statusN = status;   
+    const ReportStatus = async (status) => {
         const messageBox = document.querySelector('.messageDetails');
         messageBox.style.display = 'block';
-    }
+      
+        const selectedReport = rows.find(row => row.id === globalVar);
+        if (!selectedReport) {
+            toast.error('No report selected');
+            return;
+        }
+      
+        statusN = status;
+      
+        let subject, message;
+      
+        if (status === 'In progress') {
+            subject = `Facility Closed: ${selectedReport.facility}`;
+            message = `Dear StriveSports Community Member,<br/><br/>
+                Please note that the <strong>${selectedReport.facility}</strong> is currently <strong>closed until further notice</strong>.<br/><br/>
+                Our staff is working diligently to ensure the facility is safe for use.<br/>
+                All existing bookings for the <strong>${selectedReport.facility}</strong> have been cancelled and no new bookings will be permitted for the foreseeable future.<br/><br/>
+                We appreciate your understanding and will notify you once the facility is available again.`;
+        } else if (status === 'Done') {
+            subject = `Facility Reopened: ${selectedReport.facility}`;
+            message = `Dear StriveSports Community Member,<br/><br/>
+                Thank you for your patience.<br/>
+                We're happy to inform you that the <strong>${selectedReport.facility}</strong> is now <strong>open and available for use</strong> again.<br/><br/>
+                You may resume booking this facility as normal.`;
+        }
+      
+        try {
+            // First update the report status
+            await updateReportStatus(globalVar, status, "");
+            
+            // Only send emails if status is "In progress" or "Done"
+            if (status === 'In progress' || status === 'Done') {
+                try {
+                    const emailData = await getemails();
+                    console.log('Fetched emails:', emailData.emails);
+            
+                    if (!emailData.emails || emailData.emails.length === 0) {
+                        toast.warning('Status updated, but no emails found to send notification.');
+                        return;
+                    }
+            
+                    const response = await fetch(`${import.meta.env.VITE_API_URL}/emails`, { // Fixed typo here
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            subject,
+                            message,
+                            emails: emailData.emails,
+                        }),
+                    });
+            
+                    if (!response.ok) {
+                        throw new Error('Failed to send emails');
+                    }
+            
+                    toast.success(`Status updated and email notification sent (${status})`);
+                } catch (emailError) {
+                    console.error('Email error:', emailError);
+                    toast.error(`Status updated but email failed: ${emailError.message}`);
+                }
+            } else {
+                toast.success(`Status updated to ${status}`);
+            }
+        } catch (updateError) {
+            console.error('Status update error:', updateError);
+            toast.error(`Failed to update status: ${updateError.message}`);
+        }
+    };
+    
     const continue1 = () => {
         const messageBox = document.querySelector('.messageDetails');
         const input = document.querySelector('#eventText');
@@ -131,7 +200,12 @@ export default function FacilityStaff() {
                 rowsPerPageOptions={[5]}
                 sx={{
                     "& .MuiDataGrid-root": { fontFamily: "Arial, sans-serif" },
-                    "& .MuiDataGrid-cell": { fontSize:"large" },
+                    "& .MuiDataGrid-cell": { fontSize:{
+                        xs: "0.7rem",
+                        sm: "0.8rem",
+                        md: "0.9rem",
+                        lg: "1rem",
+                      },},
                 }}
             
                 

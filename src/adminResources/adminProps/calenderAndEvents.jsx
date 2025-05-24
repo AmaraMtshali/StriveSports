@@ -254,7 +254,7 @@ export default function CalenderAndEvents() {
             
         </section>
         <Box className='eventDetails' id='eventDetails'>
-                <h3>Date: </h3>
+                <h1>Event Details</h1>
                 <h3>Event name:</h3>
                 <input title='hello' type="text" className='input' id='eventName'/>
                 <h3>Event Time start:</h3>

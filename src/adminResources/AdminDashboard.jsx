@@ -53,9 +53,13 @@ export default function AdminDashboard() {
         
 
         <section className='all' id='all' >
+
             <DashboardSwitcher />
+           
             <TableOfUsers/>
+            
             <CalenderAndEvents/>
+            
             <section className='issuesAndEmails'>
                 <FacilityReports/>
                 <EmailFunctionality/>
