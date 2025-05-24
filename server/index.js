@@ -27,10 +27,9 @@ const clerk = createClerkClient({
     secretKey: process.env.CLERK_SECRET_KEY,
 });
 
-//const {clerk } = clerk({apikey:process.env.CLERK_SECRET_KEY}); // use this to get emails
 
 const app = express()
-//app.use(cors())
+
 app.use(express.json())
 app.use(cors());
 
@@ -140,7 +139,7 @@ app.post('/bookings/:id', async (req, res) => {
     }
 });
 
-// Delete a booking from admin dashboars
+// Delete a booking from admin dashboard
 //URL for  http:localhost:3000/bookings/:id 
 app.delete('/bookings/:id', async (req, res) => {
     try {
@@ -159,22 +158,7 @@ app.post('/reports',async (req,res)=>{
 
     try {
         const {facility,issue,residentInfo,message} = req.body;
-        {/*// Get the start and end of today
-        const startOfToday = new Date();
-        startOfToday.setHours(0, 0, 0, 0);
-
-        const endOfToday = new Date();
-        endOfToday.setHours(23, 59, 59, 999);
-
-        // Check if the user already submitted a report today
-        const existingReport = await Report.findOne({
-            residentInfo: residentInfo,
-            createdAt: { $gte: startOfToday, $lte: endOfToday }
-        });
-
-        if (existingReport) {
-            return res.status(400).json({ message: "You have already submitted a report today." });
-        } */}
+        
         const newReport = new ReportModel({
             facility,
             issue,
@@ -222,7 +206,7 @@ app.post('/reports/:id', async (req, res) => {
     }
 });
 
-{/* Delete a booking from admin dashboars
+{/* Delete a booking from admin dashboard
   URL for  http:localhost:3000/reports/:id */}
 app.delete('/reports/:id', async (req, res) => {
     try {
@@ -233,6 +217,7 @@ app.delete('/reports/:id', async (req, res) => {
         res.status(500).json({ error: 'Failed to delete report' });
     }
 });
+
 
 {/* Implementing the events functionality
   URL for  http:localhost:3000/emails */}
@@ -315,8 +300,20 @@ app.post('/emails', async (req, res) => {
       });
     }
   });
-  
 
+//delete an event
+app.delete('/events/:id', async (req, res) =>{
+    try{
+      const deletedEvent = await TempEventModel.findByIdAndDelete(req.params.id);
+      if (!deletedEvent) {
+      return res.status(404).json({ error: 'Event not found' });
+    }
+        res.json({message: 'Event Deleted'});
+    }catch (error){
+        console.error('Error deleting event', error);
+        res.status(500).json({ error: 'Failed to delete event'})
+    }
+  });
 
   app.get('/useremails', async (req, res) => {
     try {
@@ -357,49 +354,6 @@ app.post('/emails', async (req, res) => {
         res.status(500).send({ errorMessage: error.message });
     }
 })
-
-{/* this the dashboard implementation using the puppeteer, */}
-// app.get('/download-dashboard/:type', async (req, res) => {
-//   const { type } = req.params;
-
-//   const dashboardURLs = {
-//     maintenance: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=680810f8-19dd-4115-84d0-1a597dcd4c43&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=scale&scalingHeight=scale',
-//     booking: 'https://charts.mongodb.com/charts-project-0-hqkmgki/embed/dashboards?id=d7683d19-69a9-415c-bb7b-3b7f97a53ac1&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=scale&scalingHeight=scale',
-//   };
-
-//   const url = dashboardURLs[type];
-//   if (!url) {
-//     return res.status(400).send('Invalid dashboard type');
-//   }
-
-//   try {
-//     const browser = await puppeteer.launch({
-//       headless: 'new',
-//       args: ['--no-sandbox', '--disable-setuid-sandbox'],
-//     });
-
-//     const page = await browser.newPage();
-//     await page.setViewport({ width: 1280, height: 1000 });
-//     await page.goto(url, { waitUntil: 'networkidle2', timeout: 0 });
-
-//     await page.waitForTimeout(8000); //allowing ample time for mongodb to load charts.
-
-//     const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true });
-
-//     await browser.close();
-
-//     res.set({
-//       'Content-Type': 'application/pdf',
-//       'Content-Disposition': `attachment; filename=${type}_dashboard.pdf`,
-//       'Content-Length': pdfBuffer.length,
-//     });
-
-//     res.send(pdfBuffer);
-//   } catch (error) {
-//     console.error('PDF generation error:', error);
-//     res.status(500).send('Failed to generate PDF');
-//   }
-// });
 
 {/* downloading them by charts instead */}
 app.get('/download-dashboard/:type', async (req, res) => {

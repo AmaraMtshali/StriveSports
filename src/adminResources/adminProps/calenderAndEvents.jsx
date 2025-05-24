@@ -146,22 +146,39 @@ export default function CalenderAndEvents() {
         let selected;
         let current;
 
+        let returnValue = false;
+        let greatMonth = false;
+        let greatYear = false;
         for (let i=0; i<3; i++){
             
             selected = parseInt(dateSelected[i]);
             current = parseInt(todayDate[i]);
 
-            if (selected<current){
-                alert('You cannot select a date before tomorrow');
-                return;
-                if (i==2 && selected==current){
-                    alert('You cannot select a date before tomorrow');
-                    return;
+            if (i ===0){
+                if (selected < current){
+                    returnValue = true;
+                }
+                if (selected > current){
+                    greatYear = true;
                 }
             }
-            if (i==2 && selected==current){
-                    alert('You cannot select a date before tomorrow');
-                    return;
+            else if (i === 1){
+                if (selected < current && !greatYear){
+                    returnValue = true;
+                }
+                if (selected > current){
+                    greatMonth = true;
+                }
+            }
+            else if (i === 2){
+                if (selected <= current && !greatMonth && !greatYear){
+                    returnValue = true;
+                }
+            }
+
+            if (returnValue){
+                alert('You cannot select a date before tomorrow');
+                return;
             }
         }
         

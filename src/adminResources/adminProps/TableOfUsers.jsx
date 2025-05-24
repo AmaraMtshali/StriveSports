@@ -46,6 +46,8 @@ export default function TableOfUsers(){
         <section className='usersTable'>
   <Box sx={{ width: "100%" }}>
     <DataGrid
+      autoHeight
+      
       rows={rows}
       columns={[
         { field: 'name', headerName: 'Name', flex: 1 },

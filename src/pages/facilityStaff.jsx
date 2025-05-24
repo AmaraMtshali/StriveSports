@@ -33,6 +33,7 @@ export default function FacilityStaff() {
                 residentInfo: element.residentInfo,
                 status: element.status,
                 __v: element.__v,
+                message: element.message || "No message provided",
             }));
 
             setRows(processedRows); //Updates state, triggering re-render
@@ -186,6 +187,7 @@ export default function FacilityStaff() {
                 columns={[
                     { field: 'facility', headerName: 'facility', flex: 1 },
                     { field: 'issue', headerName: 'issue', flex: 4 },
+                    { field: 'message', headerName: 'message', flex: 2 },
                     { field: 'status', headerName: 'status', flex: 1,
 
                         renderCell: (params) => (

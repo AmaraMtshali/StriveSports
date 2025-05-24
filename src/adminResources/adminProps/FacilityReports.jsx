@@ -20,7 +20,9 @@ export default function FacilityReports() {
                 residentInfo: element.residentInfo,
                 status: element.status,
                 __v: element.__v,
+                message: element.message || "No message provided",
             }));
+            console.log(processedRows);
 
             setRows2(processedRows); //Updates state, triggering re-render
         });
@@ -28,12 +30,15 @@ export default function FacilityReports() {
 
     return (
         <section className='usersTable'>
-                <Box>
+                <Box sx={{ width: '100%' }}>
                     <DataGrid
+                    autoHeight
+                    
                         rows={rows2}
                         columns={[
                             { field: 'facility', headerName: 'facility', flex: 1 },
                             { field: 'issue', headerName: 'issue', flex: 4 },
+                            { field: 'message', headerName: 'message', flex: 2 },
                             { field: 'status', headerName: 'status', flex: 1,},
                         ]}
                         pageSize={5}

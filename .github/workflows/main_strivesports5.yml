@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - StriveSports2
+name: Build and deploy Node.js app to Azure Web App - StriveSports5
 
 on:
   push:
@@ -25,13 +25,12 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          cd server
           npm install
-          # npm run build --if-present
-          # npm run test --if-present
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./server/* -r
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -61,16 +60,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_CA99D99D5D1842008FF5927EEDD1B48D }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_541D5A5834074667A24028990361D6D3 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_531815E75AA244209E98E14626FD0CBF }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B3832E67CF4B41ABB48F2EFEC365F629 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C447103643F840BDBD9EB51845C13376 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E758A02EDDD946BFBC422524B6178904 }}
 
-      - name: Deploy to Azure Web App
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'StriveSports2'  # Your Azure Web App name
+          app-name: 'StriveSports5'
           slot-name: 'Production'
-          package: release.zip
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-
+          package: .
           
