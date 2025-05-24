@@ -66,4 +66,23 @@ describe('POST /check-booking', () => {
     expect(res.statusCode).toBe(500);
     expect(res.body.message).toBe('Internal server error');
   });
+
+//Equivalance testing
+    test('should return 200 even with unknown sport (edge class)', async () => {
+  UserModel.findOne.mockResolvedValue(null);
+
+  const res = await request(app)
+    .post('/check-booking')
+    .send({ sport: 'unknownsport', date: '2025-05-23', time: '12:00' });
+
+  expect(res.statusCode).toBe(200);
+  expect(res.body.message).toBe('Time slot available');
+});
+
+test('should handle missing fields (invalid input class)', async () => {
+  const res = await request(app)
+    .post('/check-booking')
+    .send({ sport: '', date: '', time: '' });
+  expect(res.statusCode).toBe(200);
+});
 });

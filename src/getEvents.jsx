@@ -18,3 +18,5 @@ async function getEvents(){
         },
     ]
 }
+
+export default getEvents;

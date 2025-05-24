@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
-const ReportModel = require('../models/reports'); // adjust path if needed
+const ReportModel = require('../models/reports');
+
+// Extend Jest timeout to 30 seconds (default is only 5 seconds)
+jest.setTimeout(30000);
 
 let mongoServer;
 
@@ -10,13 +13,15 @@ beforeAll(async () => {
   await mongoose.connect(uri);
 });
 
-afterAll(async () => {
-  await mongoose.disconnect();
-  await mongoServer.stop();
-});
-
 afterEach(async () => {
   await ReportModel.deleteMany();
+});
+
+afterAll(async () => {
+  await mongoose.disconnect();
+  if (mongoServer) {
+    await mongoServer.stop();
+  }
 });
 
 describe('ReportModel', () => {

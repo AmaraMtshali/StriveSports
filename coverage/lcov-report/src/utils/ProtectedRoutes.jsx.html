@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.38% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/13</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.38% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/13</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -95,28 +95,28 @@
 <a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -127,25 +127,25 @@ import { Navigate, Outlet } from 'react-router-dom';
 const ProtectedRoute = ({ allowedRoles }) =&gt; {
   const { userId, isLoaded, sessionClaims } = useAuth();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >   if (!isLoaded) {</span>
-<span class="cstat-no" title="statement not covered" >    return &lt;div&gt;Loading...&lt;/div&gt;;</span>
+   if (!isLoaded) {
+    return &lt;div&gt;Loading...&lt;/div&gt;;
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!userId) {</span>
-<span class="cstat-no" title="statement not covered" >    return &lt;Navigate to="/" /&gt;;</span>
+  if (!userId) {
+    return &lt;Navigate to="/" /&gt;;
   }
 &nbsp;
-  const userRole = <span class="cstat-no" title="statement not covered" >sessionClaims?.publicMetadata?.role;</span>
-<span class="cstat-no" title="statement not covered" >  console.log('User Role:', userRole);</span>
+  const userRole = sessionClaims?.publicMetadata?.role;
+  console.log('User Role:', userRole);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!userRole) {</span>
-<span class="cstat-no" title="statement not covered" >    return &lt;Navigate to="/" /&gt;;</span>
+    if (!userRole) {
+    return &lt;Navigate to="/" /&gt;;
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (allowedRoles.includes(userRole)) {</span>
-<span class="cstat-no" title="statement not covered" >    return &lt;Outlet /&gt;;</span>
+  if (allowedRoles.includes(userRole)) {
+    return &lt;Outlet /&gt;;
   } else {
-<span class="cstat-no" title="statement not covered" >    return &lt;Navigate to="/" /&gt;;</span>
+    return &lt;Navigate to="/" /&gt;;
   }
 };
 &nbsp;
@@ -157,7 +157,7 @@ export default ProtectedRoute;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-05-23T20:16:37.220Z
+                at 2025-05-24T18:29:11.055Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
