@@ -190,11 +190,57 @@ export default function CalenderAndEvents() {
     }
 
     //event click functionality
-    const handleEventClick = (clickInfo) => {
-        if (window.confirm(`Are you sure you want to delete this event?`)) {
+    const handleEventClick = async (clickInfo) => {
+        if (window.confirm(`Are you sure you want to delete the event "${clickInfo.event.title}"?`)) {
+            const eventId = clickInfo.event.id;
+            const eventTitle = clickInfo.event.title;
+    
+            // Remove the event from calendar UI
             clickInfo.event.remove();
+    
+            try {
+                // Delete from server
+                await fetch(`${import.meta.env.VITE_API_URL}/events/${eventId}`, {
+                    method: 'DELETE',
+                });
+    
+                // Fetch email list
+                const data = await getemails();
+    
+                if (!data.emails || data.emails.length === 0) {
+                    console.warn('No emails to notify about cancellation.');
+                    return;
+                }
+    
+                // Email content
+                const subject = `Event Cancelled: ${eventTitle}`;
+                const message = `Dear StriveSports Community member,<br/><br/>
+                We regret to inform you that the event "<strong>${eventTitle}</strong>" has been cancelled.<br/><br/>
+                We apologize for any inconvenience and hope to see you at future events.`;
+
+    
+                // Send email
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/emails`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        subject,
+                        message,
+                        emails: data.emails
+                    }),
+                });
+    
+                const result = await response.json();
+    
+                if (!response.ok) {
+                    console.error('Failed to send cancellation email:', result.error);
+                }
+            } catch (error) {
+                console.error('Error during event deletion or email sending:', error);
+            }
         }
-    }
+    };
+    
     const getemails = async () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/useremails`);

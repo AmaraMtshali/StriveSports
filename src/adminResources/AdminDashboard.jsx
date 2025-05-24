@@ -37,7 +37,6 @@ export default function AdminDashboard() {
             <h1 className='adminDashboard'>Admin Dashboard</h1>
 
             <ul className='adminDashboardNav'>
-                <li><button id='allProps' className='propsNav' onClick={()=>navigateTo(0)}>All</button></li>
                 <li><button id='statistics' className='propsNav' onClick={()=>navigateTo(1)}>Statistics</button></li>
                 <li><button id='users' className='propsNav' onClick={()=>navigateTo(2)}>Users</button></li>
                 <li><button id='calenderAndEvents' className='propsNav' onClick={()=>navigateTo(3)}>Events&Calender</button></li>
