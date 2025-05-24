@@ -12,12 +12,12 @@
     height:75vh;
     box-sizing: border-box;
     scroll-margin-top: 80px;
-    margin-top:1vh;
+    margin-top:5vh;
     position:relative;
     overflow: hidden;
     width:100%;
     text-align: center;
-    margin-top: 15vh;
+    margin-top: 5vh;
   }
 
 .contact-text{
@@ -55,8 +55,9 @@
       align-items: center;
       text-align: center;
       padding: 2rem 1rem;
-      margin-top: 20vh;
-      height: 40vh;
+      margin-top: 5vh;
+      min-height: auto;
+      height: auto;
       margin-bottom: 2vh;
 
     }

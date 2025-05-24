@@ -61,10 +61,10 @@ function Landing() {
       <section id="about" style={{ scrollMarginTop: '120px' }}>
       <About />
       </section>
-      <section id="contact" style={{scrollMarginTop: '120px',minHeight: '100vh'}}>
+      <section id="contact" style={{scrollMarginTop: '120px'}}>
         <Contact/>
       </section>
-      <section id="signup" style={{scrollMarginTop: '120px',minHeight: '100vh'}}> 
+      <section id="signup" style={{scrollMarginTop: '120px'}}> 
         <Signup />
       </section>
     </section>
