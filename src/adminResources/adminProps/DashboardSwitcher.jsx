@@ -23,7 +23,7 @@ const DashboardSwitcher = () => {
 //logic to download csv files based on the current dashboard you are currently seeing
   const handleDownloadCSV = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/download-csv/${activeDashboard}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/download-csv/${activeDashboard}`);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
