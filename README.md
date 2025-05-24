@@ -26,6 +26,7 @@ Creating a Sports management Application to manage community facilities (SD Assi
 This project is an assignment that we have for SD and we must undergo sprint methodologies to build and deploy a succesful running application.
 To view all our scrum methodologies applied to make this a success head over to this link
 - [Notion Dashboard](https://www.notion.so/SD-Project-1cce71bbe6ed80748a4ee19f4457aaf6?pvs=4)
+- [Deployed site](https://blue-plant-09eedf103.6.azurestaticapps.net/)
 
 
 ## Technologies
